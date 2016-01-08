@@ -2,4 +2,7 @@
 /node_modules
 Homestead.yaml
 Homestead.json
+.env.*.php
+.env.php
 .env
+/bootstrap/compiled.php
