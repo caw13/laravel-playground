@@ -25,12 +25,23 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-//    Route::get('articles','ArticlesController@index');
-//    Route::get('articles/create','ArticlesController@create');
-//    Route::get('articles/{id}','ArticlesController@show');
-//    Route::post('articles','ArticlesController@store');
     Route::resource('articles','ArticlesController');
+    Route::get('/user/{user}/articles','ArticlesController@getUserArticles');
     Route::get('/', function () {
         return view('welcome');
     });
+
+    Route::get('foo',['middleware'=>'manager',function(){
+        return 'this page may only be viewed by managers';
+    }]);
+
+    // Authentication routes...
+    Route::get('auth/login', 'Auth\AuthController@getLogin');
+    Route::post('auth/login', 'Auth\AuthController@postLogin');
+    Route::get('auth/logout', 'ArticlesController@getLogout');
+
+
+    // Registration routes...
+    Route::get('auth/register', 'Auth\AuthController@getRegister');
+    Route::post('auth/register', 'Auth\AuthController@postRegister');
 });
