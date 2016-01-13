@@ -14,7 +14,7 @@
 </head>
 <body>
 @if(Auth::user())
-    <input type="button" value="logout" class="btn btn-primary" onclick="window.location='/auth/logout'"/>
+    <input type="button" value="logout" class="btn btn-primary form-control" onclick="window.location='/auth/logout'"/>
 @endif
   <div class="container">
       @yield('content')
